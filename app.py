@@ -5,8 +5,12 @@ import numpy as np
 import pickle
 
 # 1. Load the Model and the Scaler
-model = pickle.load(open('heart_disease_model.pkl', 'rb'))
-scaler = pickle.load(open('scaler.pkl', 'rb'))
+# We use try/except to catch loading errors early
+try:
+    model = pickle.load(open('heart_disease_model.pkl', 'rb'))
+    scaler = pickle.load(open('scaler.pkl', 'rb'))
+except Exception as e:
+    st.error(f"Error loading model files: {e}")
 
 st.set_page_config(page_title="HeartCare AI", page_icon="❤️")
 st.title("🩺 Heart Disease Clinical Assistant")
@@ -18,7 +22,7 @@ with st.form("medical_form"):
         age = st.number_input("Age", 1, 100, 45)
         sex = st.selectbox("Sex (1=M, 0=F)", [1, 0])
         cp = st.selectbox("Chest Pain Type (0-3)", [0, 1, 2, 3])
-        trestbps = st.number_input("Blood Pressure", 80, 200, 120)
+        trestbps = st.number_input("Resting Blood Pressure", 80, 200, 120)
         chol = st.number_input("Cholesterol", 100, 500, 200)
         fbs = st.selectbox("Fasting Blood Sugar > 120 (1=True, 0=False)", [0, 1])
     with col2:
@@ -34,12 +38,27 @@ with st.form("medical_form"):
 
 # 3. Prediction Logic
 if submitted:
-    features = np.array([[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])
-    features_scaled = scaler.transform(features)
-    prediction = model.predict(features_scaled)
+    # Build a list of the 13 features in the EXACT order the model expects
+    raw_features = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
     
-    st.markdown("---")
-    if prediction[0] == 1:
-        st.error("### ⚠️ Result: High Risk of Heart Disease")
-    else:
-        st.success("### ✅ Result: Low Risk detected")
+    # Convert to a 2D array (1 row, 13 columns)
+    features_array = np.array(raw_features).reshape(1, -1)
+    
+    try:
+        # Scale the data
+        features_scaled = scaler.transform(features_array)
+        
+        # Predict
+        prediction = model.predict(features_scaled)
+        
+        st.markdown("---")
+        if prediction[0] == 1:
+            st.error("### ⚠️ Result: High Risk of Heart Disease")
+            st.write("Clinical indicators suggest a high probability of heart disease.")
+        else:
+            st.success("### ✅ Result: Low Risk Detected")
+            st.write("Clinical indicators do not show significant risk factors.")
+            
+    except Exception as e:
+        st.error(f"Prediction Error: {e}")
+        st.write("This usually happens if the input data shape doesn't match the model requirements.")
