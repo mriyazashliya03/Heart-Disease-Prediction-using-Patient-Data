@@ -34,10 +34,7 @@ with st.form("medical_form"):
 
 # 3. Prediction Logic
 if submitted:
-    # Create the 13-feature array
     features = np.array([[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])
-    
-    # Scale and Predict
     features_scaled = scaler.transform(features)
     prediction = model.predict(features_scaled)
     
