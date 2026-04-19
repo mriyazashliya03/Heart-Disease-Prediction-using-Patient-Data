@@ -31,6 +31,7 @@ with st.form("medical_form"):
         ecg_display = st.selectbox("Resting ECG Results", 
                            options=[0, 1, 2], 
                            format_func=lambda x: {0: "Normal", 1: "ST-T Wave Abnormality", 2: "Left Ventricular Hypertrophy"}[x])
+        restecg = ecg_display   
         thalach = st.number_input("Max Heart Rate", 60, 220, 150)
         exang_display = st.selectbox("Pain/Angina after Exercise?", ["No", "Yes"])
         exang = 1 if exang_display == "Yes" else 0        
