@@ -69,7 +69,7 @@ Dataset obtained from UCI / Kaggle.
 The models were evaluated using accuracy, precision, recall, and F1-score. Performance comparison was carried out among KNN, Logistic Regression, and Gradient Boosting.Models were trained and evaluated, and the final model was saved and used for prediction in the deployed application.
 
 The models were evaluated using standard classification metrics such as accuracy, precision, recall, and F1-score. Based on the evaluation, Logistic Regression was selected as the final model and saved for prediction.The selected Logistic Regression model is used in the application to predict the presence of heart disease based on patient input features.
-## Our Project Workflow
+## Our Project Workflow :
 
 1. Data Collection  
 2. Data Preprocessing  
