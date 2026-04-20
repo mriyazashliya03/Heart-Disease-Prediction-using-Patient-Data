@@ -95,3 +95,4 @@ This pipeline ensures a structured approach to solving the heart disease predict
 You can access our deployed Streamlit application here:
 
 https://heart-disease-prediction-using-patient-data-5fmbu8mvnmj8ntaz8j.streamlit.app/
+<img width="724" height="819" alt="image" src="https://github.com/user-attachments/assets/e848046e-e57d-4d43-8ea1-ec3f8c211256" />
