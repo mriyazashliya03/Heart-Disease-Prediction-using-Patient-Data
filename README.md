@@ -8,6 +8,15 @@
 
 This project uses patient medical data to build and evaluate machine learning models for predicting heart disease, aiming to support early diagnosis and improve healthcare decision-making.
 
+Project Overview
+
+Heart disease is the leading cause of death worldwide. This project builds a Machine Learning pipeline to:
+
+- *Analyze* patient health data and identify cardiovascular risk factors
+- *Predict* whether a patient has cardiovascular disease
+- *Visualize* insights through an interactive Streamlit dashboard
+- *Provide* risk assessment and medical recommendations
+
 ##  Dataset Description
 
 The project uses the Cleveland Heart Disease dataset, which contains clinical data of patients.
