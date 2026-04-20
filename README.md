@@ -80,3 +80,9 @@ The models were evaluated using standard classification metrics such as accuracy
 7. Model Deployment  
 
 This pipeline ensures a structured approach to solving the heart disease prediction problem.
+
+##  Live Application
+
+You can access our deployed Streamlit application here:
+
+https://heart-disease-prediction-using-patient-data-5fmbu8mvnmj8ntaz8j.streamlit.app/
