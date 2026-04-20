@@ -8,7 +8,7 @@
 
 This project uses patient medical data to build and evaluate machine learning models for predicting heart disease, aiming to support early diagnosis and improve healthcare decision-making.
 
-Project Overview
+## Project Overview
 
 Heart disease is the leading cause of death worldwide. This project builds a Machine Learning pipeline to:
 
